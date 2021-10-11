@@ -51,13 +51,13 @@ Array(200).fill().forEach(addStar);
 const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
 //Cube
-/*const cloudTexture = new THREE.TextureLoader().load('cloud Intelligence.png')
+const cloudTexture = new THREE.TextureLoader().load('cloud Intelligence.png')
 const cloudIntel = new THREE.Mesh(
-    new THREE.BoxGeometry(5,5,5),
+    new THREE.BoxGeometry(15,15,15),
     new THREE.MeshBasicMaterial({map: cloudTexture})
 );
 
-scene.add(cloudIntel);*/
+scene.add(cloudIntel);
 
 const moonTexture = new THREE.TextureLoader().load('moonSurface.jpg')
 const normalTexture = new THREE.TextureLoader().load('normalMoon.jpeg')
@@ -69,6 +69,28 @@ const moon = new THREE.Mesh(
 );
 
 scene.add(moon);
+
+cloudIntel.position.z = 30;
+cloudIntel.position.x = -10;
+moon.position.z = -20;
+moon.position.y = 1;
+moon.position.x = -10;
+
+function moveCamera() {
+    const t = document.body.getBoundingClientRect().top;
+    cloudIntel.rotation.x += 0.05;
+    cloudIntel.rotation.y += 0.075;
+    cloudIntel.rotation.z += 0.05;
+
+    moon.rotation.y += 0.01;
+    moon.rotation.z += 0.01;
+
+    camera.position.z = t * -0.01;
+    camera.position.x = t * -0.035;
+    camera.position.y = t * -0.025;
+}
+
+document.body.onscroll = moveCamera;
 
 function animate() {
     requestAnimationFrame(animate);
