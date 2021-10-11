@@ -48,7 +48,7 @@ function addStar() {
 }
 Array(200).fill().forEach(addStar);
 //Space
-const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+const spaceTexture = new THREE.TextureLoader().load('earth+space.jpeg');
 scene.background = spaceTexture;
 //Cube
 const cloudTexture = new THREE.TextureLoader().load('cloud Intelligence.png')
@@ -62,6 +62,9 @@ scene.add(cloudIntel);
 const moonTexture = new THREE.TextureLoader().load('moonSurface.jpg')
 const normalTexture = new THREE.TextureLoader().load('normalMoon.jpeg')
 
+const fireTexture = new THREE.TextureLoader().load('wideFire.jpeg')
+const panoramic = new THREE.TextureLoader().load('panoVermaak.jpeg')
+
 const moon = new THREE.Mesh(
     new THREE.SphereGeometry(3, 32, 32),
     new THREE.MeshStandardMaterial({map: moonTexture,
@@ -70,11 +73,30 @@ const moon = new THREE.Mesh(
 
 scene.add(moon);
 
+const fire = new THREE.Mesh(
+    new THREE.BoxGeometry(25,25,25),
+    new THREE.MeshBasicMaterial({map: fireTexture})
+);
+
+scene.add(fire);
+
+const pano = new THREE.Mesh(
+    new THREE.BoxGeometry(100,100,200),
+    new THREE.MeshBasicMaterial({map: panoramic})
+);
+
+scene.add(pano);
+
 cloudIntel.position.z = 30;
 cloudIntel.position.x = -10;
 moon.position.z = -20;
 moon.position.y = 1;
 moon.position.x = -10;
+fire.position.z = -30;
+fire.position.x = 40;
+pano.position.z = 40;
+pano.position.x = -120;
+pano.position.y = -20;
 
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
@@ -84,6 +106,10 @@ function moveCamera() {
 
     moon.rotation.y += 0.01;
     moon.rotation.z += 0.01;
+
+    fire.rotation.x += 0.01;
+    fire.rotation.y += 0.015;
+    fire.rotation.z += 0.01;
 
     camera.position.z = t * -0.01;
     camera.position.x = t * -0.035;
