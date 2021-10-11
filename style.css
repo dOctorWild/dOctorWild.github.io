@@ -37,3 +37,10 @@ section {
     /*background: lightsteelblue;*/
     line-height: 1.5;
 }
+
+blockquote {
+    margin: 0;
+    padding: 0;
+    grid-column: 2 / span 9;
+    margin-bottom: 10px;
+}
