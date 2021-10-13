@@ -4,7 +4,8 @@ import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-
+import imgUrl from './assets/cloud Intelligence.png'
+document.getElementById('cloud Intelligence.png').src = imgUrl;
 
 const scene = new THREE.Scene();
 
