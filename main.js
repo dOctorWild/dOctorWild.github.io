@@ -4,6 +4,8 @@ import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight);
@@ -48,10 +50,10 @@ function addStar() {
 }
 Array(200).fill().forEach(addStar);
 //Space
-const spaceTexture = new THREE.TextureLoader().load('earth+space.jpeg');
+const spaceTexture = new THREE.TextureLoader().load('assets/earth+space.jpeg');
 scene.background = spaceTexture;
 //Cube
-const cloudTexture = new THREE.TextureLoader().load('cloud Intelligence.png')
+const cloudTexture = new THREE.TextureLoader().load('assets/cloud Intelligence.png')
 const cloudIntel = new THREE.Mesh(
     new THREE.BoxGeometry(15,15,15),
     new THREE.MeshBasicMaterial({map: cloudTexture})
@@ -59,11 +61,11 @@ const cloudIntel = new THREE.Mesh(
 
 scene.add(cloudIntel);
 
-const moonTexture = new THREE.TextureLoader().load('moonSurface.jpg')
-const normalTexture = new THREE.TextureLoader().load('normalMoon.jpeg')
+const moonTexture = new THREE.TextureLoader().load('assets/moonSurface.jpg')
+const normalTexture = new THREE.TextureLoader().load('assets/normalMoon.jpeg')
 
-const fireTexture = new THREE.TextureLoader().load('wideFire.jpeg')
-const panoramic = new THREE.TextureLoader().load('panoVermaak.jpeg')
+const fireTexture = new THREE.TextureLoader().load('assets/wideFire.jpeg')
+const panoramic = new THREE.TextureLoader().load('assets/panoVermaak.jpeg')
 
 const moon = new THREE.Mesh(
     new THREE.SphereGeometry(3, 32, 32),
