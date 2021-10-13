@@ -4,8 +4,12 @@ import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import imgUrl from './assets/cloud Intelligence.png'
-document.getElementById('cloud Intelligence.png').src = imgUrl;
+import CILogo from './assets/cloud Intelligence.png';
+import EarthSpace from './assets/earth+space.jpeg';
+import moon from './assets/moonSurface.jpg';
+import normal from './assets/normalMoon.jpeg';
+//import space from './assets/space.jpg';
+import fire from './assets/wideFire.jpeg';
 
 const scene = new THREE.Scene();
 
@@ -51,10 +55,10 @@ function addStar() {
 }
 Array(200).fill().forEach(addStar);
 //Space
-const spaceTexture = new THREE.TextureLoader().load('assets/earth+space.jpeg');
+const spaceTexture = new THREE.TextureLoader().load(EarthSpace);
 scene.background = spaceTexture;
 //Cube
-const cloudTexture = new THREE.TextureLoader().load('assets/cloud Intelligence.png')
+const cloudTexture = new THREE.TextureLoader().load(CILogo)
 const cloudIntel = new THREE.Mesh(
     new THREE.BoxGeometry(15,15,15),
     new THREE.MeshBasicMaterial({map: cloudTexture})
@@ -62,33 +66,25 @@ const cloudIntel = new THREE.Mesh(
 
 scene.add(cloudIntel);
 
-const moonTexture = new THREE.TextureLoader().load('assets/moonSurface.jpg')
-const normalTexture = new THREE.TextureLoader().load('assets/normalMoon.jpeg')
+const moonTexture = new THREE.TextureLoader().load(moon)
+const normalTexture = new THREE.TextureLoader().load(normal)
 
-const fireTexture = new THREE.TextureLoader().load('assets/wideFire.jpeg')
-const panoramic = new THREE.TextureLoader().load('assets/panoVermaak.jpeg')
+const fireTexture = new THREE.TextureLoader().load(fire)
 
-const moon = new THREE.Mesh(
+const moonObj = new THREE.Mesh(
     new THREE.SphereGeometry(3, 32, 32),
     new THREE.MeshStandardMaterial({map: moonTexture,
     normalMap: normalTexture})
 );
 
-scene.add(moon);
+scene.add(moonObj);
 
-const fire = new THREE.Mesh(
+const fireObj = new THREE.Mesh(
     new THREE.BoxGeometry(25,25,25),
     new THREE.MeshBasicMaterial({map: fireTexture})
 );
 
-scene.add(fire);
-
-const pano = new THREE.Mesh(
-    new THREE.BoxGeometry(100,100,200),
-    new THREE.MeshBasicMaterial({map: panoramic})
-);
-
-scene.add(pano);
+scene.add(fireObj);
 
 cloudIntel.position.z = 30;
 cloudIntel.position.x = -10;
