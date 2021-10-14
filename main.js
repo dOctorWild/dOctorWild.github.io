@@ -21,7 +21,7 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(0);
+camera.position.setZ(30);
 
 renderer.render(scene, camera);
 
@@ -87,11 +87,11 @@ scene.add(fireObj);
 
 cloudIntel.position.z = 30;
 cloudIntel.position.x = -10;
-moon.position.z = -20;
-moon.position.y = 1;
-moon.position.x = -10;
-fire.position.z = -30;
-fire.position.x = 40;
+moonObj.position.z = -20;
+moonObj.position.y = 1;
+moonObj.position.x = -10;
+fireObj.position.z = -30;
+fireObj.position.x = 40;
 
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
@@ -99,12 +99,12 @@ function moveCamera() {
     cloudIntel.rotation.y += 0.075;
     cloudIntel.rotation.z += 0.05;
 
-    moon.rotation.y += 0.01;
-    moon.rotation.z += 0.01;
+    moonObj.rotation.y += 0.01;
+    moonObj.rotation.z += 0.01;
 
-    fire.rotation.x += 0.01;
-    fire.rotation.y += 0.015;
-    fire.rotation.z += 0.01;
+    fireObj.rotation.x += 0.01;
+    fireObj.rotation.y += 0.015;
+    fireObj.rotation.z += 0.01;
 
     camera.position.z = t * -0.01;
     camera.position.x = t * -0.035;
