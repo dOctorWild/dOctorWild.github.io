@@ -4,12 +4,12 @@ import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import CILogo from './assets/cloud Intelligence.png';
-import EarthSpace from './assets/earth+space.jpeg';
-import moon from './assets/moonSurface.jpg';
-import normal from './assets/normalMoon.jpeg';
+import CILogo from 'dist/assets/cloud Intelligence.b7d56f34.png';
+import EarthSpace from 'dist/assets/earth+space.94ec130d.jpeg';
+import moon from 'dist/assets/moonSurface.b246064f.jpg';
+import normal from 'dist/assets/normalMoon.2af0897d.jpeg';
 //import space from './assets/space.jpg';
-import fire from './assets/wideFire.jpeg';
+import fire from 'dist/assets/wideFire.124853b8.jpeg';
 
 const scene = new THREE.Scene();
 
