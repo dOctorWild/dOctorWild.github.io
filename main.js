@@ -4,12 +4,12 @@ import * as THREE from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import CILogo from 'dist/assets/cloud Intelligence.b7d56f34.png';
-import EarthSpace from 'dist/assets/earth+space.94ec130d.jpeg';
-import moon from 'dist/assets/moonSurface.b246064f.jpg';
-import normal from 'dist/assets/normalMoon.2af0897d.jpeg';
+import CILogo from './assets/cloudIntelligence.png';
+import EarthSpace from './assets/earth+space.jpeg';
+import moon from './assets/moonSurface.jpg';
+import normal from './assets/normalMoon.jpeg';
 //import space from './assets/space.jpg';
-import fire from 'dist/assets/wideFire.124853b8.jpeg';
+import fire from './assets/wideFire.jpeg';
 
 const scene = new THREE.Scene();
 
@@ -21,7 +21,7 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setZ(0);
 
 renderer.render(scene, camera);
 
@@ -68,7 +68,6 @@ scene.add(cloudIntel);
 
 const moonTexture = new THREE.TextureLoader().load(moon)
 const normalTexture = new THREE.TextureLoader().load(normal)
-
 const fireTexture = new THREE.TextureLoader().load(fire)
 
 const moonObj = new THREE.Mesh(
@@ -93,9 +92,6 @@ moon.position.y = 1;
 moon.position.x = -10;
 fire.position.z = -30;
 fire.position.x = 40;
-pano.position.z = 40;
-pano.position.x = -120;
-pano.position.y = -20;
 
 function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
