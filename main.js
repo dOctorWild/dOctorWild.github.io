@@ -6,7 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import CILogo from './assets/cloudIntelligence.png';
 import EarthSpace from './assets/earth+space.jpeg';
-import moon from './assets/moonSurface.jpg';
+import moon from './assets/jupiter.jpeg';
 import normal from './assets/normalMoon.jpeg';
 //import space from './assets/space.jpg';
 import fire from './assets/wideFire.jpeg';
@@ -48,19 +48,19 @@ function addStar() {
     const material = new THREE.MeshStandardMaterial({color:0xffffff});
     const star = new THREE.Mesh(geometry, material);
 
-    const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+    const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(500));
 
     star.position.set(x, y, z);
     scene.add(star);
 }
-Array(200).fill().forEach(addStar);
+Array(5000).fill().forEach(addStar);
 //Space
 const spaceTexture = new THREE.TextureLoader().load(EarthSpace);
 scene.background = spaceTexture;
 //Cube
 const cloudTexture = new THREE.TextureLoader().load(CILogo)
 const cloudIntel = new THREE.Mesh(
-    new THREE.BoxGeometry(15,15,15),
+    new THREE.BoxGeometry(65,47,47),
     new THREE.MeshBasicMaterial({map: cloudTexture})
 );
 
@@ -71,7 +71,7 @@ const normalTexture = new THREE.TextureLoader().load(normal)
 const fireTexture = new THREE.TextureLoader().load(fire)
 
 const moonObj = new THREE.Mesh(
-    new THREE.SphereGeometry(3, 32, 32),
+    new THREE.SphereGeometry(24, 32, 32),
     new THREE.MeshStandardMaterial({map: moonTexture,
     normalMap: normalTexture})
 );
@@ -85,9 +85,10 @@ const fireObj = new THREE.Mesh(
 
 scene.add(fireObj);
 
-cloudIntel.position.z = 30;
-cloudIntel.position.x = -10;
-moonObj.position.z = -20;
+cloudIntel.position.z = 60;
+cloudIntel.position.x = 39;
+cloudIntel.position.y = 50;
+moonObj.position.z = -100;
 moonObj.position.y = 1;
 moonObj.position.x = -10;
 fireObj.position.z = -30;

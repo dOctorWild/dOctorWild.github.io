@@ -17,10 +17,17 @@ main {
     grid-template-columns: repeat(12, 1fr);
 }
 
-h1, h2, h3, blockquote {
+h1, h3, blockquote {
     font-family: elevon, sans-serif;
     font-weight: 700;
     font-style: normal;
+}
+
+h2 {
+    font-family: elevon, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    padding: 500px;
 }
 
 header {
@@ -32,15 +39,27 @@ header {
 }
 
 section {
-    grid-column: 2 / 8;
-    padding: 1rem;
+    grid-column: 2 / 10;
+    padding: 0;
     /*background: lightsteelblue;*/
-    line-height: 1.5;
+    line-height: 2px;
+    margin: 0px;
 }
 
 blockquote {
     margin: 0;
     padding: 0;
     grid-column: 2 / span 9;
-    margin-bottom: 10px;
+}
+
+p {
+    grid-column: 2 / 10;
+    padding-bottom: 10px;
+    color: azure;
+    font-family: American Typewriter, serif;
+}
+
+.ending {
+    grid-column: 2 / 10;
+    padding-top: 10px;
 }
