@@ -5,10 +5,9 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import CILogo from './assets/cloudIntelligence.png';
-import EarthSpace from './assets/earth+space.jpeg';
-import moon from './assets/jupiter.jpeg';
+import highResSpace from './assets/highresSpace.jpg';
+import moon from './assets/moonSurface.jpg';
 import normal from './assets/normalMoon.jpeg';
-//import space from './assets/space.jpg';
 import fire from './assets/wideFire.jpeg';
 
 const scene = new THREE.Scene();
@@ -32,14 +31,14 @@ const torus = new THREE.Mesh(geometry, material);
 scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xFFFFFF)
-pointLight.position.set(25,25,25);
+pointLight.position.set(-355,355,-355);
 
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(pointLight, ambientLight);
+const ambientLight = new THREE.AmbientLight(0xe1e6ed);
+scene.add(ambientLight, pointLight);
 
-const lightHelper = new THREE.PointLightHelper(pointLight);
+/*const lightHelper = new THREE.PointLightHelper(pointLight);
 const gridHelper = new THREE.GridHelper(200, 50);
-//scene.add(lightHelper, gridHelper);
+scene.add(gridHelper);*/
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -55,12 +54,12 @@ function addStar() {
 }
 Array(5000).fill().forEach(addStar);
 //Space
-const spaceTexture = new THREE.TextureLoader().load(EarthSpace);
+const spaceTexture = new THREE.TextureLoader().load(highResSpace);
 scene.background = spaceTexture;
 //Cube
 const cloudTexture = new THREE.TextureLoader().load(CILogo)
 const cloudIntel = new THREE.Mesh(
-    new THREE.BoxGeometry(65,47,47),
+    new THREE.BoxGeometry(65,20,65),
     new THREE.MeshBasicMaterial({map: cloudTexture})
 );
 
@@ -68,16 +67,16 @@ scene.add(cloudIntel);
 
 const moonTexture = new THREE.TextureLoader().load(moon)
 const normalTexture = new THREE.TextureLoader().load(normal)
-const fireTexture = new THREE.TextureLoader().load(fire)
 
-const moonObj = new THREE.Mesh(
+const jupiterObj = new THREE.Mesh(
     new THREE.SphereGeometry(24, 32, 32),
     new THREE.MeshStandardMaterial({map: moonTexture,
     normalMap: normalTexture})
 );
 
-scene.add(moonObj);
+scene.add(jupiterObj);
 
+const fireTexture = new THREE.TextureLoader().load(fire)
 const fireObj = new THREE.Mesh(
     new THREE.BoxGeometry(25,25,25),
     new THREE.MeshBasicMaterial({map: fireTexture})
@@ -88,9 +87,9 @@ scene.add(fireObj);
 cloudIntel.position.z = 60;
 cloudIntel.position.x = 39;
 cloudIntel.position.y = 50;
-moonObj.position.z = -100;
-moonObj.position.y = 1;
-moonObj.position.x = -10;
+jupiterObj.position.z = -100;
+jupiterObj.position.y = 1;
+jupiterObj.position.x = -10;
 fireObj.position.z = -30;
 fireObj.position.x = 40;
 
@@ -100,8 +99,7 @@ function moveCamera() {
     cloudIntel.rotation.y += 0.075;
     cloudIntel.rotation.z += 0.05;
 
-    moonObj.rotation.y += 0.01;
-    moonObj.rotation.z += 0.01;
+    jupiterObj.rotation.y += 0.01;
 
     fireObj.rotation.x += 0.01;
     fireObj.rotation.y += 0.015;
@@ -119,7 +117,9 @@ function animate() {
 
     torus.rotation.x += 0.01;
     torus.rotation.y += 0.005;
-    torus.rotation.x += 0.01;
+    torus.rotation.z += 0.01;
+    jupiterObj.rotation.y += 0.01;
+    cloudIntel.rotation.y += 0.01;
 
     controls.update();
 
